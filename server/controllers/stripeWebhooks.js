@@ -34,10 +34,10 @@ export const stripeWebhooks = async (request, response) => {
 
         // send conformation email 
 
-        // await inngest.send({
-        //   name:"app/show.booked",
-        //   data:{bookingId}
-        // })
+        await inngest.send({
+          name:"app/show.booked",
+          data:{bookingId}
+        })
         // Then define and call a function to handle the event payment_intent.succeeded
         break;
       }
