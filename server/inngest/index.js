@@ -1,5 +1,8 @@
 import { Inngest } from "inngest";
 import  User  from "../models/user.js";
+import Booking from "../models/Booking.js";
+import Show from "../models/Show.js";
+
 // Create a client to send and receive events
 export const inngest = new Inngest({ id: "Movie-Ticket-Booking" });
 
@@ -51,5 +54,35 @@ const syncUserUpdation = inngest.createFunction(
 );
 
 
+
+// inngest function to cancel booking and release the seats of show after 10 minuts of booking created if the payment is not made 
+
+const releaseSeatsAndDeleteBooking = inngest.createFunction(
+  {id:"releae-seats-delete-booking"},
+  {event:"app/checkpayment"},
+  async({event,step})=>{
+      const tenMinutsLater = new Date( Date.now()+10*60*100)
+      await step.sleepUntil('wait-for-10-minuts',tenMinutsLater)
+      await step.run('check-payment-status',async()=>{
+        const BookingId = event.data.BookingId;
+        const booking = await Booking.findById(BookingId)
+        // if payment is not maid release seats and delete booking
+        if(!booking.isPaid){
+          const show = Show.findById(booking.show);
+          booking.bookedSeats.forEach((seat) => {
+            delete show.occupiedSeats[seat]
+          });
+          show.markModified("occupiedSeats")
+          show.save();
+          await Booking.findByIdAndDelete(booking._id)
+        }
+
+      })
+  }
+)
+
+
+
+
 // Create an empty array where we'll export future Inngest functions
-export const functions = [syncUserCreation, syncUserDeletion,syncUserUpdation ];
+export const functions = [syncUserCreation, syncUserDeletion,syncUserUpdation,releaseSeatsAndDeleteBooking ];
