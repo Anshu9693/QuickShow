@@ -3,7 +3,7 @@
     "builds": [
         {
             "src": "server.js",
-            "use": "vercel-node-esm",
+            "use": "@vercel/node",
             "config": {
                 "includeFiles": [
                     "dist/**"
