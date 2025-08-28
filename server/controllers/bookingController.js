@@ -1,3 +1,4 @@
+import { trusted } from "mongoose";
 import Booking from "../models/Booking.js";
 import Show from "../models/Show.js";
 import stripe from 'stripe'
@@ -44,6 +45,7 @@ export const createBooking = async (req, res) => {
       user: userId,
       show: showId,
       amount: showData.showPrice * selectedSeats.length,
+      isPaid:true,
       bookedSeats: selectedSeats,
     });
 

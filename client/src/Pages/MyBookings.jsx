@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { dummyBookingData } from "../assets/assets";
+// import { dummyBookingData } from "../assets/assets";
 import Loading from "../Components/Loading";
 import BlurCircle from "../Components/BlurCircle";
 import { BookOpen } from "lucide-react";
@@ -8,11 +8,11 @@ import TimeFormate from "../Lib/TimeFormate";
 import isoTimeFormate from "../Lib/isoTimeFormate";
 import { DateFormat } from "../Lib/DateFormate";
 import { useAppContext } from "../context/AppContext";
+import { Link } from "react-router-dom";
+
 
 const MyBookings = () => {
-  const currency = import.meta.env.VITE_CURRENCY
-;
-
+  const currency = import.meta.env.VITE_CURRENCY;
   
     const {axios,getToken,user,image_base_url} = useAppContext()
   
@@ -78,7 +78,7 @@ const MyBookings = () => {
 
             <div className="flex items-center gap-4 ">
               <p className="text-2xl font-semibold mb-3 ">{currency}{item.amount}</p>
-              {!item.isPaid &&  <button className="bg-primary px-4 py-1.5 mb-3 text-sm rounded-full font-medium cursor-pointer">Pay Now</button> }
+              {!item.isPaid &&  <Link to={item.paymentLink} className="bg-primary px-4 py-1.5 mb-3 text-sm rounded-full font-medium cursor-pointer">Pay Now</Link> }
             </div>
             
             
