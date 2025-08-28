@@ -11,7 +11,7 @@ const Loading = () => {
 if(nextUrl){
   setTimeout(()=>{
     navigate(`/`+nextUrl);
-  },8000)
+  },5000)
 }
   })
 
@@ -25,4 +25,4 @@ if(nextUrl){
   )
 }
 
-export default Loading
+export default Loading;

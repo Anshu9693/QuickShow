@@ -21,6 +21,7 @@ const port = 3000;
     //stripe webhook route
       app.use('/api/stripe',express.raw({type:'application/json'}), stripeWebhooks);
     // Middleware
+    
     app.use(express.json());
     app.use(cors());
     app.use(clerkMiddleware());

@@ -42,7 +42,7 @@ const NavBar = () => {
         transition rounded font-medium cursor-pointer'>Login</button>):(
           <UserButton>
             <UserButton.MenuItems>
-              <UserButton.Action label='My Bookings' labelIcon={<TicketPlus width={15}/>} onClick={()=>navigate('/My-booings')} />
+              <UserButton.Action label='My Bookings' labelIcon={<TicketPlus width={15}/>} onClick={()=>navigate('/my-bookings')} />
             </UserButton.MenuItems  >
              <UserButton.MenuItems>
               <UserButton.Action label='favorites' labelIcon={<Bookmark width={15}/>} onClick={()=>navigate('/Favorite')} />
