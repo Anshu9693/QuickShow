@@ -64,16 +64,16 @@ const releaseSeatsAndDeleteBooking = inngest.createFunction(
       const tenMinutsLater = new Date( Date.now()+10*60*1000)
       await step.sleepUntil('wait-for-10-minuts',tenMinutsLater)
       await step.run('check-payment-status',async()=>{
-        const BookingId = event.data.BookingId;
-        const booking = await Booking.findById(BookingId)
+        const bookingId = event.data.bookingId;
+        const booking = await Booking.findById(bookingId)
         // if payment is not maid release seats and delete booking
-        if(!booking.isPaid){
+        if(!booking.isPaid){  
           const show = await Show.findById(booking.show);
           booking.bookedSeats.forEach((seat) => {
             delete show.occupiedSeats[seat]
           });
           show.markModified("occupiedSeats")
-          show.save();
+          await show.save();
           await Booking.findByIdAndDelete(booking._id)
         }
 
