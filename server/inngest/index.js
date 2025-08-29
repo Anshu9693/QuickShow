@@ -121,5 +121,5 @@ const booking = await Booking.findById(bookingId).populate({
 
 // Create an empty array where we'll export future Inngest functions
 export const functions = [syncUserCreation, syncUserDeletion,syncUserUpdation,releaseSeatsAndDeleteBooking,
-  // sendBookingConformationEmail 
+  sendBookingConformationEmail 
  ];
