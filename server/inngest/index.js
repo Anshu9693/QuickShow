@@ -96,7 +96,7 @@ const booking = await Booking.findById(bookingId).populate({
         await sendEmail({
           to:booking.user.email,
           subject:`Payment Conformation "${booking.show.movie.title}"Booked!`,
-          body: <div>hello</div>
+          body: '<div>hello</div>'
 //           `<div style="font-family: Arial, sans-serif; line-height: 1.5;">
 //   <h2>Hi ${booking.user.name},</h2>
 //   <p>
