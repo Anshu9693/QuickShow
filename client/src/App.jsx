@@ -11,7 +11,7 @@ import Favorite from "./Pages/Favorite";
 import { Toaster } from "react-hot-toast";
 import HeroSection from "./Components/HeroSection";
 import FeaturedSection from "./Components/FeaturedSection";
-import Layout from "./Pages/admin/LayOut";
+import Layout from "./Pages/admin/Layout";
 import DashBoard from "./Pages/admin/DashBoard";
 import AddShows from "./Pages/admin/AddShows";
 import ListShows from "./Pages/admin/ListShows";
