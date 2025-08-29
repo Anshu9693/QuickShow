@@ -5,10 +5,10 @@ import { protectedAdmin } from '../middleware/auth.js';
 const showRouter = express.Router();
 
 showRouter.get('/now-playing',
-    //  protectedAdmin,
+     protectedAdmin,
      getNowPlayingMovies);
 showRouter.post('/add',
-    // protectedAdmin,
+    protectedAdmin,
     addShow)
 showRouter.get('/all',getShows)
 showRouter.get('/:movieId',getShow)
