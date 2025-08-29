@@ -3,7 +3,7 @@ import { assets } from '../../assets/assets'
 import { LayoutDashboardIcon, PlusSquareIcon, ListIcon, ListCollapseIcon, PhoneCall } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 
-const adminSideBar = () => {
+const AdminSideBar = () => {
 
   const user ={
       firstName:"Admin",
@@ -39,4 +39,4 @@ const adminSideBar = () => {
   )
 }
 
-export default adminSideBar
+export default AdminSideBar

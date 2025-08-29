@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
 import React, { useEffect } from 'react'
 import AdminNavBar from '../../Components/admin/AdminNavBar'
-import AdminSideBar from '../../Components/admin/adminSideBar'
+import AdminSideBar from '../../Components/admin/AdminSideBar'
 import { useAppContext } from "../../context/AppContext";
 import Loading from "../../Components/Loading";
 
-const LayOut = () => {
+const Layout = () => {
   const {isAdmin,fetchIsAdmin} = useAppContext();
   
 
@@ -25,4 +25,4 @@ const LayOut = () => {
   ):<Loading/>;
 } 
 
-export default LayOut
+export default Layout;
